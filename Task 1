@@ -1,0 +1,39 @@
+Write a blog on Difference between HTTP1.1 vs HTTP2
+
+Ans:- 
+Differentiator	                                         HTTP/1.1	                                                   HTTP/2
+
+Year                                	                  	1997                                                      	2015
+
+Key Features	                      	It supports connection reuse i.e.                              Uses multiplexing, where over
+                                      for every TCP connection there could be multiple               a single TCP connection resources to be delivered
+                                      requests and responses, and pipelining where the               are interleaved and arrive at the client almost at
+                                      client can request several resources from the server           the same time. It is done using streams which can  
+                                      at once. However, pipelining was hard to implement             be prioritized, can have dependencies and individual
+                                      due to issues such as head-of-line blocking and was            flow control. It also provides a feature called
+                                      not a feasible solution.                                       server push that allows the server to send data
+                                                                                                     that the client will need but has not yet requested.
+                                                                                    
+Status Code	                        	Introduces a warning header field to carry additional          Underlying semantics of HTTP such as headers,status
+                                      information about the status of a message. Can define          codes remains the same.	 
+                                      24 status codes, error reporting is quicker and more          
+                                      efficient.                                                    
+                      
+Authentication Mechanism              It is relatively secure since it uses digest                  Security concerns from previous versions will continue
+                                      authentication, NTLM authentication.                          to be seen in HTTP/2. However, it is better equipped to 
+                                                                                                    deal with them due to new TLS features like connection 
+                                                                                                    error of type Inadequate_Security.
+
+Caching	                            	Expands on the caching support by using additional            HTTP/2 does not change much in terms of caching.
+                                      headers like cache-control, conditional headers like          If-Match and by using entity tags.	 With the server push
+                                                                                                    feature if the client finds the resources are already 
+                                                                                                    present in the cache, it can cancel the pushed stream.
+
+Web Traffic	                          HTTP/1.1 provides faster delivery of web pages and          	HTTP/2 utilizes multiplexing and server push to effectively
+                                      reduces web traffic as compared to HTTP/1.0. However,         reduce the page load time by a greater margin along
+                                      TCP starts slowly and with domain sharding (resources         with being less sensitive to network delays.
+                                      can be downloaded simultaneously by using multiple 
+                                      domains), connection reuse and pipelining, there is an 
+                                      increased risk of network congestion.  
+
+       
